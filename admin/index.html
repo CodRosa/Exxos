@@ -1,0 +1,139 @@
+<!DOCTYPE html>    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilos básicos */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .image-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%; /* Ocupa 90% da largura da tela em dispositivos móveis */
+            max-width: 400px; /* Define um limite máximo para telas maiores */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 16px; /* Texto maior para dispositivos móveis */
+            color: #555;
+        }
+
+        form input[type="email"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 12px; /* Espaço maior para toque fácil */
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px; /* Texto maior para botões */
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adaptações para dispositivos móveis */
+        @media (max-width: 480px) {
+            #card {
+                padding: 15px;
+            }
+
+            form label {
+                font-size: 14px; /* Fonte menor em telas muito pequenas */
+            }
+
+            form input[type="email"],
+            form input[type="password"],
+            form input[type="submit"] {
+                font-size: 14px; /* Ajusta os inputs para telas menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="../img/fundo.jpg">
+        <div id="card">
+            <form id="loginForm">
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" required>
+                
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" required>
+                
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+    </div>
+    <script>
+        // Credenciais simuladas para o exemplo
+        const credentials = {
+            email: "admin@exemplo.com",
+            password: "EXXOS00"
+        };
+
+        // Manipulador do formulário
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('senha').value;
+
+            // Verificação das credenciais
+            if (email === credentials.email && password === credentials.password) {
+                alert("Login bem-sucedido!");
+                window.location.href = "escolha.html"; // Redireciona para outra página
+            } else {
+                alert("E-mail ou senha incorretos. Tente novamente.");
+            }
+        });
+    </script>
+</body>
+</html>
